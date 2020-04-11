@@ -9,14 +9,13 @@
 /.psa*
 /.cache
 /.spago
-/dist/app.*.js*
 
+/dist/
 
 # Ctags
 /tags
 /tags/
 /tags*
-
 
 # Yarn
 /yarn-error.log
