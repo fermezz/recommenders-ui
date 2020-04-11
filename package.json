@@ -1,0 +1,30 @@
+{
+  "name": "recommenders-ui",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "postinstall": "spago install",
+    "clean": "rm -rf node_modules output .spago ./dist/* *.lock",
+    "build": "spago build",
+    "watch": "spago build --watch",
+    "bundle": "spago bundle-app --main Main --to dist/app.js && parcel build assets/index.html",
+    "serve": "yarn bundle && http-server dist",
+    "test": "spago test"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "cssnano": "^4.1.10",
+    "parcel-bundler": "^1.12.4",
+    "purescript": "^0.13.6",
+    "spago": "^0.13.1"
+  },
+  "dependencies": {
+    "http-server": "^0.12.1",
+    "marked": "^0.8.0"
+  }
+}

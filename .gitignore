@@ -1,0 +1,22 @@
+/bower_components/
+/node_modules/
+/.pulp-cache/
+/output/
+/generated-docs/
+/.psc-package/
+/.psc*
+/.purs*
+/.psa*
+/.cache
+/.spago
+/dist/app.*.js*
+
+
+# Ctags
+/tags
+/tags/
+/tags*
+
+
+# Yarn
+/yarn-error.log
