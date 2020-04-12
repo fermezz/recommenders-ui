@@ -9,7 +9,7 @@ import Effect.Aff.Class (class MonadAff)
 import Halogen (liftEffect)
 import Halogen as H
 import Halogen.HTML as HH
-import Recommenders.Component.HelloWorld as HW
+import Recommenders.Component.Home as CH
 import Recommenders.Capability.Navigate (class Navigate, navigate)
 import Recommenders.Data.Route (Route(..), routeCodec)
 import Recommenders.Page.NotFound as NF
@@ -28,7 +28,7 @@ data Action
 type OpaqueSlot slot = forall query. H.Slot query Void slot
 
 type ChildSlots =
-  ( helloworld :: OpaqueSlot Unit
+  ( home       :: OpaqueSlot Unit
   , notfound   :: OpaqueSlot Unit
   )
 
@@ -53,7 +53,7 @@ component = H.mkComponent
       -- first we'll get the route the user landed on
       initialRoute <- hush <<< (RD.parse routeCodec) <$> liftEffect getHash
       -- then we'll navigate to the new route (also setting the hash)
-      navigate $ fromMaybe HelloWorld initialRoute
+      navigate $ fromMaybe Home initialRoute
 
   handleQuery :: forall a. Query a -> H.HalogenM State Action ChildSlots Void m (Maybe a)
   handleQuery = case _ of
@@ -64,8 +64,8 @@ component = H.mkComponent
   render :: State -> H.ComponentHTML Action ChildSlots m
   render { route } = case route of
     Just r -> case r of
-      HelloWorld -> do
-        HH.slot (SProxy :: _ "helloworld") unit HW.component {} absurd
+      Home -> do
+        HH.slot (SProxy :: _ "home") unit CH.component {} absurd
       NotFound -> do
         HH.slot (SProxy :: _ "notfound") unit NF.component {} absurd
     Nothing ->

@@ -34,7 +34,7 @@ render state =
         [ HH.text label ]
       , HH.a
         [ css "btn btn-lg btn-secondary"
-        , safeHref HelloWorld
+        , safeHref Home
         ]
         [ HH.text "Take me home" ]
       ]
