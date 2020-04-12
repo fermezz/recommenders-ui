@@ -13,6 +13,7 @@ import Recommenders.Component.ByeWorld as BW
 import Recommenders.Component.HelloWorld as HW
 import Recommenders.Capability.Navigate (class Navigate, navigate)
 import Recommenders.Data.Route (Route(..), routeCodec)
+import Recommenders.Page.NotFound as NF
 import Routing.Duplex as RD
 import Routing.Hash (getHash)
 
@@ -28,8 +29,9 @@ data Action
 type OpaqueSlot slot = forall query. H.Slot query Void slot
 
 type ChildSlots =
-  ( helloworld :: OpaqueSlot Unit,
-    byeworld   :: OpaqueSlot Unit
+  ( helloworld :: OpaqueSlot Unit
+  , byeworld   :: OpaqueSlot Unit
+  , notfound   :: OpaqueSlot Unit
   )
 
 component
@@ -69,6 +71,6 @@ component = H.mkComponent
       ByeWorld -> do
         HH.slot (SProxy :: _ "byeworld") unit BW.component {} absurd
       NotFound -> do
-        HH.div_ [ HH.text "Whoops! Page not found" ]
-    Nothing -> do
-      HH.div_ [ HH.text "Whoops! Page not found" ]
+        HH.slot (SProxy :: _ "notfound") unit NF.component {} absurd
+    Nothing ->
+      HH.slot (SProxy :: _ "notfound") unit NF.component {} absurd
