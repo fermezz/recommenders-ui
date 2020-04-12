@@ -12,7 +12,6 @@ import Routing.Duplex.Parser (RouteParser, RouteResult(..), parsePath, runRouteP
 
 data Route
   = HelloWorld
-  | ByeWorld
   | NotFound
 
 derive instance genericRoute :: Generic Route _
@@ -25,7 +24,6 @@ instance showRoute :: Show Route where
 routeCodec :: RouteDuplex' Route
 routeCodec = root $ sum
   { "HelloWorld": noArgs
-  , "ByeWorld": "bye" / noArgs
   , "NotFound": "notfound" / noArgs
   }
 

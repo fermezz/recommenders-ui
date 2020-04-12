@@ -9,7 +9,6 @@ import Effect.Aff.Class (class MonadAff)
 import Halogen (liftEffect)
 import Halogen as H
 import Halogen.HTML as HH
-import Recommenders.Component.ByeWorld as BW
 import Recommenders.Component.HelloWorld as HW
 import Recommenders.Capability.Navigate (class Navigate, navigate)
 import Recommenders.Data.Route (Route(..), routeCodec)
@@ -30,7 +29,6 @@ type OpaqueSlot slot = forall query. H.Slot query Void slot
 
 type ChildSlots =
   ( helloworld :: OpaqueSlot Unit
-  , byeworld   :: OpaqueSlot Unit
   , notfound   :: OpaqueSlot Unit
   )
 
@@ -68,8 +66,6 @@ component = H.mkComponent
     Just r -> case r of
       HelloWorld -> do
         HH.slot (SProxy :: _ "helloworld") unit HW.component {} absurd
-      ByeWorld -> do
-        HH.slot (SProxy :: _ "byeworld") unit BW.component {} absurd
       NotFound -> do
         HH.slot (SProxy :: _ "notfound") unit NF.component {} absurd
     Nothing ->
