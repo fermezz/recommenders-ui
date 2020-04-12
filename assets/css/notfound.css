@@ -44,3 +44,16 @@ h2 {
   background-color: var(--primary-bg-color);
   color: var(--secondary-color);
 }
+
+.navbar {
+  background-color: var(--primary-bg-color);
+}
+
+.navbar .navbar-brand, .nav-link {
+  color: var(--secondary-color);
+  font-family: 'Viga', sans-serif;
+}
+
+.nav-link:hover {
+  color: var(--light-color);
+}

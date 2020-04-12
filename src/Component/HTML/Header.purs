@@ -10,7 +10,7 @@ import Recommenders.Data.Route (Route(..))
 header :: forall i p. Route -> HH.HTML i p
 header route =
   HH.nav
-    [ css "navbar navbar-light" ]
+    [ css "navbar" ]
     [ HH.div
       [ css "container" ]
       [ HH.a
